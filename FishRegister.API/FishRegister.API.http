@@ -1,0 +1,6 @@
+@FishRegister.API_HostAddress = http://localhost:5263
+
+GET {{FishRegister.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
