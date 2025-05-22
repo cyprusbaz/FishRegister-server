@@ -1,6 +1,6 @@
 namespace FishRegister.Domain.Entities;
 
-public class User
+public class Admin
 {
     public Guid Id { get; set; }
     public required  string Username { get; set; }
@@ -8,5 +8,4 @@ public class User
     public required string Password { get; set; }
     public required string Name { get; set; }
     public required string Surname { get; set; }
-    List<FishPost>? fishPosts { get; set; } = new List<FishPost>();
 }
