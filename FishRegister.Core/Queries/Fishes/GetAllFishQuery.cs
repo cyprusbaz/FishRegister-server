@@ -5,5 +5,4 @@ namespace FishRegister.Core.Queries;
 
 public class GetAllFishQuery : IRequest<List<Fish>>
 {
-    
 }

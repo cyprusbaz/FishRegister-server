@@ -6,10 +6,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FishRegister.Core.Handlers.Fishes;
 
-public class GetAllFishHandler(AppDbContext dbContext) : IRequestHandler<GetAllFishQuery, List<Fish>>
+public class GetAllFishHandler : IRequestHandler<GetAllFishQuery, List<Fish>>
 {
+    AppDbContext context;
+
+    public GetAllFishHandler(AppDbContext context)
+    {
+        this.context = context;
+    }
+
     public async Task<List<Fish>> Handle(GetAllFishQuery request, CancellationToken cancellationToken)
     {
-        return await dbContext.Fishes.ToListAsync(cancellationToken);
+        return await context.Fishes.ToListAsync(cancellationToken);
     }
 }
