@@ -20,4 +20,11 @@ public class FishController : BaseControlller
         var result = await Mediator.Send(command);
         return Ok(result);
     }
+
+    [HttpGet("GetById")]
+    public async Task<IActionResult> GetById([FromQuery] GetFishByIdQuery query)
+    {
+        var result = await Mediator.Send(query);
+        return Ok(result);
+    }
 }
