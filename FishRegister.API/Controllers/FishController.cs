@@ -27,4 +27,12 @@ public class FishController : BaseControlller
         var result = await Mediator.Send(query);
         return Ok(result);
     }
+
+    [HttpDelete("Delete")]
+    public async Task<IActionResult> Delete([FromQuery] DeleteFishCommand command)
+    {
+        var result = await Mediator.Send(command);
+        
+        return Ok(result);
+    }
 }
