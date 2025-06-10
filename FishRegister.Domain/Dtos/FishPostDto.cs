@@ -9,4 +9,6 @@ public class FishPostDto
     public string? Content { get; set; }
     public string Image { get; set; }
     public Fish Fish { get; set; }
+    public DateTime Created { get; set; }
+    public Guid UserId { get; set; }
 }

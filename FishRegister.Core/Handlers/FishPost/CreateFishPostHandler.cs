@@ -22,6 +22,8 @@ public class CreateFishPostHandler : IRequestHandler<CreateFishPostCommand, Guid
             Title = request.Title,
             Image = request.Image,
             Fish = request.Fish,
+            Created = request.Created,
+            UserId = request.UserId
         };
         await _context.AddAsync(post, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);

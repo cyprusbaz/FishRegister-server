@@ -7,4 +7,6 @@ public class FishPost
     public string? Content { get; set; }
     public required string Image { get; set; }
     public required Fish Fish { get; set; }
+    public required DateTime Created { get; set; } = DateTime.Now;
+    public required Guid UserId { get; set; }
 }

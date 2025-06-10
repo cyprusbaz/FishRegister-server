@@ -1,4 +1,5 @@
 using FishRegister.Core.Commands.FishPost;
+using FishRegister.Core.Handlers.FishPost;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FishRegister.API.Controllers;
@@ -6,9 +7,17 @@ namespace FishRegister.API.Controllers;
 public class FishPostController : BaseControlller
 {
     [HttpPost("Create")]
-    public async Task<IActionResult> Create(CreateFishPostCommand commnad)
+    public async Task<IActionResult> Create(CreateFishPostCommand command)
     {
-        var result = await Mediator.Send(commnad);
+        var result = await Mediator.Send(command);
+
+        return Ok(result);
+    }
+
+    [HttpGet("GetAll")]
+    public async Task<IActionResult> GetAll([FromQuery]GetAllFishPostHandler command)
+    {
+        var result = await Mediator.Send(command);
 
         return Ok(result);
     }
