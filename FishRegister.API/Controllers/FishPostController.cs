@@ -1,4 +1,5 @@
 using FishRegister.Core.Commands.FishPost;
+using FishRegister.Core.Queries.FishPost;
 using FishRegister.Core.Handlers.FishPost;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,7 @@ public class FishPostController : BaseControlller
     }
 
     [HttpGet("GetAll")]
-    public async Task<IActionResult> GetAll([FromQuery]GetAllFishPostHandler command)
+    public async Task<IActionResult> GetAll([FromQuery]GellAllFishPostQuery command)
     {
         var result = await Mediator.Send(command);
 

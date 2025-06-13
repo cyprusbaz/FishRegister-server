@@ -21,7 +21,7 @@ public class CreateFishPostHandler : IRequestHandler<CreateFishPostCommand, Guid
             Content = request.Content,
             Title = request.Title,
             Image = request.Image,
-            Fish = request.Fish,
+            FishId = request.FishId,
             Created = request.Created,
             UserId = request.UserId
         };
