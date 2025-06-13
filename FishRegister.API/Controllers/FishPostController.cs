@@ -22,4 +22,5 @@ public class FishPostController : BaseControlller
 
         return Ok(result);
     }
+    
 }
