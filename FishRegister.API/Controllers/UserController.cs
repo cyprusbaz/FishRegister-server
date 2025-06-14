@@ -12,6 +12,14 @@ public class UserController : BaseControlller
         var result = await Mediator.Send(command);
         return Ok(result);
     }
+
+    [HttpGet("Get")]
+    public async Task<IActionResult> Get([FromQuery]GetUserByIdQuery query)
+    {
+        var result = await Mediator.Send(query);
+        return Ok(result);
+    }
+    
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll([FromQuery]GetAllUsersQuery query)
     {
