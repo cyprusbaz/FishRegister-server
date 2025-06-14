@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <Folder Include="Commands\Admin\" />
-      <Folder Include="Commands\User\" />
       <Folder Include="Handlers\Admin\" />
       <Folder Include="Queries\Admin\" />
       <Folder Include="Services\" />
