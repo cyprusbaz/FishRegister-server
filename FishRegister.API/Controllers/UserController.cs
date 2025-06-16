@@ -26,4 +26,11 @@ public class UserController : BaseControlller
         var result = await Mediator.Send(query);
         return Ok(result);
     }
+
+    [HttpPost("Login")]
+    public async Task<IActionResult> AutheticateUser([FromForm] AuthenticateUserCommand command)
+    {
+        var result = await Mediator.Send(command);
+        return Ok(result);
+    } 
 }
