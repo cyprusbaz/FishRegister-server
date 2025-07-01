@@ -8,6 +8,8 @@ using FishRegister.Domain.Configuration;
 using FishRegister.Infrastructure.Services;
 using FishRegister.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -63,7 +65,16 @@ builder.Services.AddCors(options =>
             .AllowCredentials();
     });
 });
-builder.Services.AddControllers();
+builder.Services.AddAuthorization();
+
+builder.Services.AddControllers(config =>
+{
+    // Add a global authorization filter that requires authenticated users
+    var policy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+    config.Filters.Add(new AuthorizeFilter(policy));
+});
 
 builder.Services.AddSwaggerGen(c =>
 {

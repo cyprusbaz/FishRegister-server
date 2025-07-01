@@ -21,14 +21,13 @@ public class UserController : BaseControlller
         return Ok(result);
     }
     
-    [Authorize]
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll([FromQuery]GetAllUsersQuery query)
     {
         var result = await Mediator.Send(query);
         return Ok(result);
     }
-
+    [AllowAnonymous]
     [HttpPost("Login")]
     public async Task<IActionResult> AutheticateUser([FromForm] AuthenticateUserCommand command)
     {
