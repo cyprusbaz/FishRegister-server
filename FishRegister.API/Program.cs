@@ -3,6 +3,7 @@ using FishRegister.Core.Handlers.Fishes;
 using FishRegister.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using FishRegister.Core.Commands.Fishes;
+using FishRegister.Domain.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
 builder.Services.AddCors(options =>
 {

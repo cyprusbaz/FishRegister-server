@@ -12,5 +12,4 @@ public class AppDbContext: DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Fish> Fishes { get; set; }
     public DbSet<FishPost> FishPosts { get; set; }
-    public DbSet<Admin> Admins { get; set; }
 }
