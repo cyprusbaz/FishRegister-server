@@ -9,4 +9,6 @@ public class User
     public required string Name { get; set; }
     public required string Surname { get; set; }
     List<FishPost>? fishPosts { get; set; } = new List<FishPost>();
+    public string? RefreshToken { get; set; }
+    public DateTime RefreshTokenExpiry { get; set; }
 }
