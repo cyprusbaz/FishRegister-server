@@ -1,9 +1,9 @@
 using MediatR;
-
+using FishRegister.Domain.Dtos;
 namespace FishRegister.Core.Commands.User;
 
-public class AuthenticateUserCommand : IRequest<Domain.Entities.User>
+public class AuthenticateUserCommand : IRequest<AuthenticateUserDto>
 {
-    public string username { get; set; }
-    public string password { get; set; }
+    public string Username { get; set; }
+    public string Password { get; set; }
 }

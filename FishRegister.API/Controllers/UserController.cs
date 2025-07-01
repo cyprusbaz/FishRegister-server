@@ -1,5 +1,6 @@
 using FishRegister.Core.Commands.User;
 using FishRegister.Core.Queries.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FishRegister.API.Controllers;
@@ -20,6 +21,7 @@ public class UserController : BaseControlller
         return Ok(result);
     }
     
+    [Authorize]
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll([FromQuery]GetAllUsersQuery query)
     {

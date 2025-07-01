@@ -3,11 +3,12 @@ using System.Security.Claims;
 using System.Text;
 using FishRegister.Domain.Configuration;
 using FishRegister.Domain.Entities;
+using FishRegister.Infrastructure.Services.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 
 namespace FishRegister.Infrastructure.Services;
 
-public class JwtService
+public class JwtService : IJwtService
 {
     private readonly JwtSettings _jwtSettings;
 
