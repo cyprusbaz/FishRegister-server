@@ -7,7 +7,8 @@ namespace FishRegister.API.Controllers;
 
 public class UserController : BaseControlller
 {
-    [HttpPost("Create")]
+    [AllowAnonymous]
+    [HttpPost("Register")]
     public async Task<IActionResult> Create(CreateUserCommand command)
     {
         var result = await Mediator.Send(command);
@@ -29,9 +30,9 @@ public class UserController : BaseControlller
     }
     [AllowAnonymous]
     [HttpPost("Login")]
-    public async Task<IActionResult> AutheticateUser([FromForm] AuthenticateUserCommand command)
+    public async Task<IActionResult> AutheticateUser([FromBody] AuthenticateUserCommand command)
     {
         var result = await Mediator.Send(command);
         return Ok(result);
-    } 
+    }
 }

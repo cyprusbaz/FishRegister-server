@@ -9,6 +9,5 @@ public class CreateFishPostCommand : IRequest<Guid>
     public string? Content { get; set; }
     public required string Image { get; set; }
     public required Guid FishId { get; set; }
-    public DateTime Created { get; set; }
     public Guid UserId { get; set; }
 }

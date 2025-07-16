@@ -22,7 +22,7 @@ public class CreateFishPostHandler : IRequestHandler<CreateFishPostCommand, Guid
             Title = request.Title,
             Image = request.Image,
             FishId = request.FishId,
-            Created = request.Created,
+            Created = DateTime.Now,
             UserId = request.UserId
         };
         await _context.AddAsync(post, cancellationToken);

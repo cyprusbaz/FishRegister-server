@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.JavaScript;
 using FishRegister.Domain.Entities;
 
 namespace FishRegister.Domain.Dtos;
