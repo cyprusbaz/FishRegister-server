@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices.JavaScript;
 using FishRegister.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 
 namespace FishRegister.Domain.Dtos;
 

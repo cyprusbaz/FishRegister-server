@@ -8,7 +8,7 @@ namespace FishRegister.API.Controllers;
 public class FishPostController : BaseControlller
 {
     [HttpPost("Create")]
-    public async Task<IActionResult> Create(CreateFishPostCommand command)
+    public async Task<IActionResult> Create([FromForm]CreateFishPostCommand command)
     {
         var result = await Mediator.Send(command);
 

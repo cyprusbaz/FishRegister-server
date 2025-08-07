@@ -32,7 +32,6 @@ public class FishController : BaseControlller
     public async Task<IActionResult> Delete([FromQuery] DeleteFishCommand command)
     {
         var result = await Mediator.Send(command);
-        
         return Ok(result);
     }
 }
