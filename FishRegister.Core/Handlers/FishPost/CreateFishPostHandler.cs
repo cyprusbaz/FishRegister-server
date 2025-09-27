@@ -1,3 +1,4 @@
+using System.IO.Pipelines;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using FishRegister.Core.Commands.FishPost;
@@ -11,18 +12,17 @@ public class CreateFishPostHandler : IRequestHandler<CreateFishPostCommand, Guid
 {
     private AppDbContext _context;
     private readonly IWebHostEnvironment _env;
-    // private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public CreateFishPostHandler(AppDbContext context, IWebHostEnvironment env /*, IHttpContextAccessor httpContextAccessor*/)
+    public CreateFishPostHandler(AppDbContext context, IWebHostEnvironment env)
     {
         _context = context;
         _env = env;
-       //_httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<Guid> Handle(CreateFishPostCommand request, CancellationToken cancellationToken)
     {
-        var image = request.Image.FileName;
+        var image = request.Image;
+        var name = image.Name;
         
         if (request.Image is null || request.Image.Length == 0)
         {
@@ -33,26 +33,19 @@ public class CreateFishPostHandler : IRequestHandler<CreateFishPostCommand, Guid
         {
             Directory.CreateDirectory(imageFolder);
         }
-        var fileName = request.UserId + image;
+        var fileName = request.UserId + name + "file.jpg";
         var imagePath = Path.Combine(imageFolder, fileName);
-        
         using (var fileStream = new FileStream(imagePath, FileMode.Create))
         {
             await request.Image.CopyToAsync(fileStream);
-        };
-        // if (_httpContextAccessor == null)
-        // {
-        //     throw new Exception("HttpContext is not available, http request context is required");
-        // }
-        //
-        // var imageUrl = $"{_httpContextAccessor.HttpContext.Request.Protocol}://{_httpContextAccessor.HttpContext.Request.Host.Value}/{imagePath}";
-        
+        }
+
         var post = new Domain.Entities.FishPost
         {
             UserId = request.UserId,
             Content = request.Content,
             Title = request.Title,
-            Image = image,
+            Image = fileName,
             Created = DateTime.Now,
             FishId = request.FishId,
         };
