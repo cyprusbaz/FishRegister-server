@@ -1,6 +1,7 @@
 using FishRegister.Core.Commands.FishPost;
 using FishRegister.Core.Queries.FishPost;
 using FishRegister.Core.Handlers.FishPost;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FishRegister.API.Controllers;
@@ -14,7 +15,8 @@ public class FishPostController : BaseControlller
 
         return Ok(result);
     }
-
+    
+    [AllowAnonymous]
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll([FromQuery]GellAllFishPostQuery command)
     {
